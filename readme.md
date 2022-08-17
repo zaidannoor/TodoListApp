@@ -5,7 +5,6 @@ Fitur fitur pada aplikasi ini
 - List yang ditambahkan tidak boleh sama
 - Memberi tanda bahwa list sudah selesai
 - Menghapus list
-- List yang ditambahkan tidak boleh sama
 
  ***
 Fitur yang belum/akan ditambahkan
