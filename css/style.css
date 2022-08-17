@@ -15,8 +15,27 @@ main .list-container .card-body{
     font-size: 18px;
 }
 
-  main .list-container .card-body svg:hover {
+main .list-container .card-body svg:hover {
     border-radius: 50%;
     box-shadow: 0px 0px 10px rgba(255, 196, 0, 0.8)
     ;
-}  
+}
+
+.checked{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* .ceklis{
+    position: absolute;
+    top: 0;
+    right: 1;
+    padding: 5px;
+}
+
+.delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+} */

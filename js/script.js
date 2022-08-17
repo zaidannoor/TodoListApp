@@ -36,13 +36,13 @@ function add(){
       // push nilai ke dalam variabel myTask
       myTask.push(task);
 
-      // melakukan looping untuk menampilkan list task
+      // melakukan looping untuk menampilkan list task dalam bentuk card
       let cards = '';
       myTask.forEach(task => {
         cards += `
         <div class="col-4 my-3 text-center">
           <div class="card rounded-pill bg-dark text-light">
-              <div id="${iteration}" class="card-body d-flex justify-content-center">
+              <div id="${iteration}" class="konten card-body d-flex justify-content-center">
                   ${task} 
                   <div class="ceklis mx-3">
                       <svg onclick="tes()" xmlns="http://www.w3.org/2000/svg" width="28" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -64,23 +64,25 @@ function add(){
         // memerbarui checkButton dan delete Button
         checkButton = document.querySelectorAll('main .list-container .ceklis svg');
         deleteButton = document.querySelectorAll('main .list-container .delete svg');
-    });
+      });
     } 
 }
 
+
+
+
 const tes = () => {
+  const node = document.getElementsByClassName('.konten');
+  for (let index = 0; index < checkButton.length; index++) {
+    
+    
+  }
   console.log('tes');
-  //checkButton.forEach(cb => cb.addEventListener('click', () => console.log('tes')))
-};
+}
 
-// function addEventListenerList(list, event, fn) {
-//   for (let index = 0; index < list.length; index++) {
-//       list[index].addEventListener(event, fn,);
-//   }
-// }
-
-//addEventListenerList(checkButton,'click',() => console.log('tes'));
-
+// algoritma
+// 1. click tombol ceklis dari salah satu node
+// 2. node yang tombol ceklis nya di klik akan menambahkan class baru
 
 
   
