@@ -64,16 +64,11 @@ const deleteList = () => {
       ul.removeChild(li);
 
       // Menghapus task dari array myTask
-      //myTask[i] = undefined;
       myTask.splice(i,1);
-      console.log(i);
-      console.log(myTask);
-      console.log(delButton.length)
-      return true;
     }
   }
-  
 }
+
 
 
 
@@ -114,8 +109,6 @@ function addList(){
       span.appendChild(hapus);
       // memasukkan span kedalam li
       li.appendChild(span);
-      
-      // Memanggil function togglingCheck dan deleteList()
       togglingCheck();
       deleteList();
     }
@@ -123,12 +116,14 @@ function addList(){
     alert('Inputan tidak boleh kosong')
     
   }
+  // Memanggil function togglingCheck dan deleteList()
   
 } 
 
 addButton();
-togglingCheck();
-deleteList();
+adjust();
+
+
 
 
 
