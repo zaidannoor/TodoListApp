@@ -17,6 +17,6 @@ main .list-container .card-body{
 
   main .list-container .card-body svg:hover {
     border-radius: 50%;
-    box-shadow: 0px 0px 9px rgba(255, 196, 0, 0.8)
+    box-shadow: 0px 0px 10px rgba(255, 196, 0, 0.8)
     ;
 }  

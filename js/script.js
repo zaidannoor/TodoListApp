@@ -1,21 +1,30 @@
+// menampilkan tanggal dan waktu saat ini
+let d = new Date();
+document.querySelector("main p").innerHTML = `
+    ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()},   ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}
+`;
+
+
+
 // mendapatkan elemen form
 const addTaskForm = document.getElementById('addTaskForm');
 const searchForm = document.getElementById('searchForm');
 const search = document.getElementById('search');
 const addTask = document.getElementById('addTask');
 
-let d = new Date();
-document.querySelector("main p").innerHTML = `
-    ${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()},   ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}
-`;
+// mendapatkan elemen gambar ceklis dan delete
+let checkButton = document.querySelectorAll('main .list-container .ceklis svg');
+let deleteButton = document.querySelectorAll('main .list-container .delete svg');
 
-    
 
-myTask =[];
+// array untuk menampung task todo list
+let myTask =[];
+// variabel untuk menghitung iterasi
+let iteration = 0;
 
 // event saat form task disubmit
 addTaskForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+    //event.preventDefault();
     // mendapatkan nilai form addTask
     let task = addTask.value;
 
@@ -29,12 +38,13 @@ addTaskForm.addEventListener('submit', function(event) {
       myTask.push(task);
 
       // melakukan looping untuk menampilkan list task
+      
       let cards = '';
       myTask.forEach(task => {
         cards += `
         <div class="col-4 my-3 text-center">
           <div class="card rounded-pill bg-dark text-light">
-              <div class="card-body d-flex justify-content-center">
+              <div id="${iteration}" class="card-body d-flex justify-content-center">
                   ${task} 
                   <div class="ceklis mx-3">
                       <svg xmlns="http://www.w3.org/2000/svg" width="28" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -53,22 +63,26 @@ addTaskForm.addEventListener('submit', function(event) {
         </div>`
         
         document.querySelector("main .list-container").innerHTML = cards;
-        //$(".list-container").html(cards);
+        // memerbarui checkButton dan delete Button
+        checkButton = document.querySelectorAll('main .list-container .ceklis svg');
+        deleteButton = document.querySelectorAll('main .list-container .delete svg');
     });
-    }
-
-    
-
-    
-    
+    } 
 });
 
-let myArr = ['zaidan' , 'noor'];
-if(!myArr.find(name => name == 'zaidan')){
-  console.log('tidak ada');
-}
+
+const tes = () => {
+  checkButton.forEach(cb => cb.addEventListener('click', () => console.log('tes')))
+};
+
+// function addEventListenerList(list, event, fn) {
+//   for (let index = 0; index < list.length; index++) {
+//       list[index].addEventListener(event, fn,);
+//   }
+// }
+
+//addEventListenerList(checkButton,'click',() => console.log('tes'));
+tes();
+
 
   
-else{
-  console.log('ada');
-}
