@@ -10,20 +10,9 @@ main .container p{
     font-size: 18px;
 }
 
-main .list-container .card-body{
-    padding: 5px;
-    font-size: 18px;
-}
-
-main .list-container .card-body svg:hover {
-    border-radius: 50%;
-    box-shadow: 0px 0px 10px rgba(255, 196, 0, 0.8)
-    ;
-}
-
 .checked{
     text-decoration: line-through;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 ul{
     list-style: none;
@@ -51,4 +40,9 @@ ul li span{
 ul li span img{
     cursor: pointer;
     margin-right: 10px;
+}
+
+ul li img:hover{
+    border-radius: 30%;
+    box-shadow: 0px 0px 10px rgba(255, 196, 0, 0.8);
 }
