@@ -12,10 +12,49 @@ const searchForm = document.getElementById('searchForm');
 const search = document.getElementById('search');
 const addTask = document.getElementById('addTask');
 
-// mendapatkan elemen gambar ceklis dan delete
-let checkButton = document.querySelectorAll('main .list-container .ceklis svg');
-let deleteButton = document.querySelectorAll('main .list-container .delete svg');
 
+// Membuat tombol ceklis dan delete, kemudian menempelkannya pada tiap list
+let myNodelist = document.getElementsByTagName("LI");
+
+for (let i = 0; i < myNodelist.length; i++) {
+  let span = document.createElement("SPAN");
+
+  // Menambahkan element ceklis
+  let ceklis = document.createElement("IMG");
+  ceklis.setAttribute('src' , 'img/check.svg');
+  ceklis.setAttribute('width' , '28');
+  ceklis.className = 'ceklis';
+  span.appendChild(ceklis);
+
+  // menambahkan element delete
+  let hapus = document.createElement("IMG");
+  hapus.setAttribute('src' , 'img/trash.svg');
+  hapus.setAttribute('width' , '28');
+  hapus.className = 'hapus';
+  span.appendChild(hapus);
+
+  // memasukkan span kedalam nodelist
+  myNodelist[i].appendChild(span);
+}
+
+// klik tombol bergambar ceklis untuk mentoggle class checked list yang diinginkan
+let checkButton = document.getElementsByClassName("ceklis");
+for (let i = 0; i< checkButton.length; i++) {
+  checkButton[i].onclick = () => {
+    myNodelist[i].classList.toggle("checked");
+  }
+  
+}
+
+// klik tombol bergambar trash untuk menghapus list yang diinginkan
+let delButton = document.getElementsByClassName("hapus");
+for (let i = 0; i < delButton.length; i++) {
+  delButton[i].onclick = function() {
+  let span = this.parentElement;
+  let li = span.parentElement
+  li.style.display = "none";
+  }
+}
 
 // array untuk menampung task todo list
 let myTask =[];
@@ -23,66 +62,29 @@ let myTask =[];
 let iteration = 0;
 
 function add(){
-  //event.preventDefault();
-    // mendapatkan nilai form addTask
-    let task = addTask.value;
+  // mendapatkan nilai form addTask
+  let task = addTask.value;
 
-    // mengecek apakah task yang diinputkan sudah ada dalam array atau belum
-    if(myTask.find(tugas => tugas == task)){
-      // menampilkan alert kesalahan
-      alert(`${task} sudah ada dalam list`);
-      
-    }else{
-      // push nilai ke dalam variabel myTask
-      myTask.push(task);
+  // mengecek apakah task yang diinputkan sudah ada dalam array atau belum
+  if(myTask.find(tugas => tugas == task)){
+    // menampilkan alert kesalahan
+    alert(`${task} sudah ada dalam list`);
+    
+  }else{
+    // push nilai ke dalam variabel myTask
+    myTask.push(task);
 
-      // melakukan looping untuk menampilkan list task dalam bentuk card
-      let cards = '';
-      myTask.forEach(task => {
-        cards += `
-        <div class="col-4 my-3 text-center">
-          <div class="card rounded-pill bg-dark text-light">
-              <div id="${iteration}" class="konten card-body d-flex justify-content-center">
-                  ${task} 
-                  <div class="ceklis mx-3">
-                      <svg onclick="tes()" xmlns="http://www.w3.org/2000/svg" width="28" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                      </svg>
-                  </div>
-                  <div class="delete">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                  </div>  
-              </div>
-          </div>
-        </div>`
-        
-        document.querySelector("main .list-container").innerHTML = cards;
-        // memerbarui checkButton dan delete Button
-        checkButton = document.querySelectorAll('main .list-container .ceklis svg');
-        deleteButton = document.querySelectorAll('main .list-container .delete svg');
-      });
-    } 
-}
-
-
-
+    
+    
+  };
+} 
 
 const tes = () => {
-  const node = document.getElementsByClassName('.konten');
-  for (let index = 0; index < checkButton.length; index++) {
-    
-    
-  }
   console.log('tes');
+  
+  
 }
 
-// algoritma
-// 1. click tombol ceklis dari salah satu node
-// 2. node yang tombol ceklis nya di klik akan menambahkan class baru
 
 
   
