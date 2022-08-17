@@ -11,32 +11,6 @@ const addTask = document.getElementById('addTask');
 // array untuk menampung task pada todo list
 let myTask =[];
 
-// Membuat tombol ceklis dan delete, kemudian menempelkannya pada tiap list
-const addButton = () => {
-  let myNodelist = document.getElementsByTagName("LI");
-
-  for (let i = 0; i < myNodelist.length; i++) {
-    let span = document.createElement("SPAN");
-
-    // Menambahkan element ceklis
-    let ceklis = document.createElement("IMG");
-    ceklis.setAttribute('src' , 'img/check.svg');
-    ceklis.setAttribute('width' , '28');
-    ceklis.className = 'ceklis';
-    span.appendChild(ceklis);
-
-    // menambahkan element delete
-    let hapus = document.createElement("IMG");
-    hapus.setAttribute('src' , 'img/trash.svg');
-    hapus.setAttribute('width' , '28');
-    hapus.className = 'hapus';
-    span.appendChild(hapus);
-
-    // memasukkan span kedalam nodelist
-    myNodelist[i].appendChild(span);
-  }
-}
-
 
 // klik tombol bergambar ceklis untuk mentoggle class checked list yang diinginkan
 const togglingCheck = () => {
@@ -60,16 +34,14 @@ const deleteList = () => {
       let span = this.parentElement;
       let li = span.parentElement;
       let ul = li.parentElement;
-      //li.style.display = "none";
       ul.removeChild(li);
 
       // Menghapus task dari array myTask
       myTask.splice(i,1);
+      deleteList();
     }
   }
 }
-
-
 
 
 // Membuat todo list baru saat submit form 
@@ -109,25 +81,16 @@ function addList(){
       span.appendChild(hapus);
       // memasukkan span kedalam li
       li.appendChild(span);
+
+      // Memanggil function togglingCheck dan deleteList()
       togglingCheck();
       deleteList();
+      
     }
   }else{
     alert('Inputan tidak boleh kosong')
-    
-  }
-  // Memanggil function togglingCheck dan deleteList()
-  
+  }  
 } 
 
-addButton();
-adjust();
-
-
-
-
-
-
-tes = ['halo' , 'hei', 'hi','hoy'];
 
   
